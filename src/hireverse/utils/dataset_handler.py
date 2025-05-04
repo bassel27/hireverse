@@ -16,7 +16,7 @@ class DatasetHandler:
         df = df.loc[
             (df["Participant"] == participant_id.lower()) & (df["Worker"] == "AGGR")
         ]
-        return df.iloc[0].to_dict()
+        return df.iloc[0].to_dict() # TODO: don't return worker: aggr
     
     @staticmethod
     def get_participant_ids():
@@ -66,14 +66,38 @@ class DatasetHandler:
         return os.path.join(output_dir, participant_id)
     
     @staticmethod
-    def get_sorted_participant_frames_images(participant_id):
+    def get_sorted_participant_frames_images(participant_id, is_image_greyscale=False) -> List[np.ndarray]:
         participant_dir = DatasetHandler.get_participant_dir(participant_id)
         frames = []
         for filename in natsorted(os.listdir(participant_dir)):
             if any(filename.endswith(ext) for ext in [".jpg", ".jpeg", ".png"]):
                 image_path = os.path.join(participant_dir, filename)
                 image = cv2.imread(image_path)
+                if is_image_greyscale:
+                    image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
                 if image is not None:
                     frames.append(image)
         return frames
     
+    @staticmethod
+    def yield_sorted_participant_frames_images(participant_id, is_image_greyscale=False):
+        participant_dir = DatasetHandler.get_participant_dir(participant_id)
+        for filename in natsorted(os.listdir(participant_dir)):
+            if any(filename.endswith(ext) for ext in [".jpg", ".jpeg", ".png"]):
+                image_path = os.path.join(participant_dir, filename)
+                image = cv2.imread(image_path)
+                if is_image_greyscale:
+                    image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+                if image is not None:
+                    yield image
+            
+    @staticmethod
+    def get_number_of_frames(participant_id):
+        participant_dir = DatasetHandler.get_participant_dir(participant_id)
+        return len(
+            [
+                f
+                for f in os.listdir(participant_dir)
+                if f.lower().endswith((".jpg", ".jpeg", ".png"))
+            ]
+        )
