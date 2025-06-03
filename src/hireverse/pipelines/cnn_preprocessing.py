@@ -48,11 +48,12 @@ def get_processed_frames_images(vid_file_path: str, participant_id):
                 continue
             frame.image = cropped_face_image
 
-            frame.image = cv2.cvtColor(frame.image, cv2.COLOR_BGR2GRAY)
+            # frame.image = cv2.cvtColor(frame.image, cv2.COLOR_BGR2GRAY)
 
             # normalized = np.clip(frame.image.astype("float32") / 255.0, 0.0, 1.0)
-
-            frame.resize(new_width=640, new_height=640)
+            # frame.resize(new_width=640, new_height=640)
+            
+            frame.resize(new_width=224, new_height=224)
 
             yield frame.image
 
@@ -104,9 +105,9 @@ def process_single_video_wrapper(args):
         return False
 
 
-def delete_first_10_frames(participant_id):
+def delete_first_30_frames(participant_id):
     participant_dir = DatasetHandler.get_participant_dir(participant_id)
-    for i in range(10):
+    for i in range(30):
         file_path = os.path.join(participant_dir, f"frame{i}.jpg")
         if os.path.exists(file_path):
             os.remove(file_path)
@@ -157,5 +158,5 @@ if __name__ == "__main__":
 
     print(participant_ids)
     for participant_id in participant_ids:
-        delete_first_10_frames(participant_id)
         adjust_frame_rate(participant_id, 30, 20)
+        delete_first_30_frames(participant_id)
