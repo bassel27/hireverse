@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 import os
 import sys
+from threading import Lock
 
 from hireverse.schemas.model_features import *
 from hireverse.schemas.frame import Frame
@@ -15,30 +16,29 @@ if project_root not in sys.path:
 
 
 class FeatureStorage:
+    csv_lock = Lock()
 
     def __init__(self, csv_path: str):
         if csv_path:
             self.csv_path = csv_path
 
     def save_to_csv(self, participant_id: str, *features):
-        data = {"participant_id": participant_id}
-        for feature in features:  # Iterate over tuple elements directly
-            data.update(asdict(feature))
+        
+        with FeatureStorage. csv_lock:
+            data = {"participant_id": participant_id}
+            for feature in features:
+                data.update(asdict(feature))
 
-        df = pd.DataFrame([data])
+            df = pd.DataFrame([data])
 
-        if not os.path.exists(self.csv_path):
-            df.to_csv(self.csv_path, index=False)
-        else:
-            existing_df = pd.read_csv(self.csv_path)
-            existing_ids = set(
-                existing_df["participant_id"]
-            )  # Convert participant_id column to a set for O(1) lookup
-            if participant_id in existing_ids:
-                return
-            df.to_csv(
-                self.csv_path, mode="a", header=False, index=False
-            )  # Append new row
+            if not os.path.exists(self.csv_path):
+                df.to_csv(self.csv_path, index=False)
+            else:
+                existing_df = pd.read_csv(self.csv_path)
+                existing_ids = set(existing_df["participant_id"])
+                if participant_id in existing_ids:
+                    return
+                df.to_csv(self.csv_path, mode="a", header=False, index=False)
 
     def _get_two_landmark_connectors_features_names(self, frames: list[Frame]):
         for frame in frames:

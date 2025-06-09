@@ -1,6 +1,6 @@
 import concurrent
 from hireverse.utils.dataset_handler import DatasetHandler
-from hireverse.utils.utils import BASE_DIR, get_participant_ids
+from hireverse.utils.utils import BASE_DIR
 import papermill as pm  
 import re
 import os
