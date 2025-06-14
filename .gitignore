@@ -12,3 +12,5 @@ interview_features.csv
 *.egg-info/
 videos_frames/
 videos_frames.zip
+model/
+model.tar.gz
