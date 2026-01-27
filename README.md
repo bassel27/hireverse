@@ -6,11 +6,7 @@ An AI-powered platform that enables users to practice for job interviews and hel
 
 ## Repository Scope
 
-**Note**: This repository contains only the **behavioral assessment component** of the HireVerse project, which includes:
-- Feature extraction pipelines (facial, prosodic, lexical)
-- ML behavioral assessment models
-
-The complete HireVerse project, including the web application, AI avatar, LangChain integration, and all other components, is available in the main monorepo: [Hireverse-Master](https://github.com/Ali-Aref1/Hireverse-Master)
+**Note**: This repository contains only the **behavioral assessment component** of the HireVerse project. The complete HireVerse project, including the web application, AI avatar, LangChain integration, and all other components, is available in the main monorepo: [Hireverse-Master](https://github.com/Ali-Aref1/Hireverse-Master)
 
 ## Table of Contents
 
@@ -18,7 +14,6 @@ The complete HireVerse project, including the web application, AI avatar, LangCh
 - [Key Features](#key-features)
 - [Technical Architecture](#technical-architecture)
 - [AI Models](#ai-models)
-- [Performance Metrics](#performance-metrics)
 - [Dataset Citation](#dataset-citation)
 
 ## Overview
@@ -65,7 +60,6 @@ The platform extracts three types of features for comprehensive performance anal
 ### 2. AI Avatar
 
 - **Platform**: Unreal Engine 5 with MetaHuman technology
-- **Character**: Vincent MetaHuman for photorealistic interviewer representation
 - **Animation**: NeuroSync for real-time facial animation synchronized with speech
 - **Streaming**: Pixel Streaming for cloud-based rendering and device-independent access
 - **Interaction**: Live Link framework for low-latency animation data streaming
@@ -87,8 +81,6 @@ The platform extracts three types of features for comprehensive performance anal
 - Live coding evaluation with Google ADK integration
 - Adaptive hints and feedback
 
-**Personalized Simulation**: Combined approach ensures realistic interview experience to help candidates refine both soft and technical skills.
-
 ### 4. Web Application
 
 **Design & Development Stack**:
@@ -97,22 +89,6 @@ The platform extracts three types of features for comprehensive performance anal
 - **Backend**: Node.js (primary server), Flask (ML inference), FastAPI (LLM evaluation)
 - **Database**: MongoDB for flexible, scalable data storage
 - **Real-Time Communication**: WebRTC for video streaming, Socket.io for messaging
-
-**Key Interfaces**:
-- User home page with interview history
-- Live interview experience with avatar interaction
-- Interactive code editor (VS Code-like)
-- Comprehensive results dashboard with detailed feedback
-
-### 5. Performance Analysis
-
-After each interview, the AI provides comprehensive feedback covering:
-- **Engagement**: Eye contact, smile intensity, body language
-- **Emotional Cues**: Six-category emotion detection (anger, fear, happiness, sadness, surprise, neutral)
-- **Facial Expressions**: Head pose, brow movement, lip dynamics
-- **Tone Analysis**: Pitch variation, intensity, speaking rate
-- **Confidence Metrics**: Pause patterns, filler word usage, speech fluency
-- **Answer Corrections**: Both behavioral (STAR method) and technical (code quality, accuracy)
 
 ## Technical Architecture
 
@@ -149,7 +125,7 @@ After each interview, the AI provides comprehensive feedback covering:
 - **Coding Evaluation**: Google Gemini 2.5 with ADK for code execution
 
 ### Behavioral Assessment
-- **Algorithm**: Support Vector Regression (SVR) with LASSO feature selection
+- **Models**: Support Vector Regression (SVR) with LASSO feature selection
 - **Features**: 108 multimodal attributes (facial, prosodic, lexical)
 - **Tools**: MediaPipe FaceMesh, Praat/Parselmouth, Librosa, WebRTC VAD
 - **Deployment**: AWS SageMaker
@@ -162,23 +138,6 @@ After each interview, the AI provides comprehensive feedback covering:
 - **Loss Function**: Adaptable Focal Loss for class imbalance handling
 - **Data Augmentation**: Synonym replacement, random deletion, back-translation (MarianMT)
 - **Deployment**: Hugging Face Hub
-
-## Performance Metrics
-
-### Behavioral Assessment
-- Average Pearson correlation: 0.4-0.6 across traits
-- Strong performance on: RecommendHiring, Engaged, NoFillers, Focused
-- Prosodic and lexical features dominate prediction accuracy
-
-### Emotion Classification
-- Accuracy: 93.9%
-- Macro F1-Score: 0.924
-- Inference Time: 80ms (DistilBERT vs. 115ms for BERT)
-
-### System Performance
-- WebRTC latency: <150ms round-trip
-- Real-time dialogue with minimal delay
-- Stable under concurrent sessions
 
 ## Dataset Citation
 
