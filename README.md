@@ -116,10 +116,11 @@ The platform extracts three types of features for comprehensive performance anal
 - MetaHuman avatar rendering
 - Pixel Streaming for cloud-based delivery
 - Live Link for real-time animation
-<img width="800" alt="image" src="https://github.com/user-attachments/assets/149bc93e-f32b-4d64-8d5a-0e363a1b3629" />
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/149bc93e-f32b-4d64-8d5a-0e363a1b3629" />
 
 ## AI Models
-<img width="953" height="403" alt="image" src="https://github.com/user-attachments/assets/1c34aba0-bc8c-4194-8f19-0de5ff7279cf" />
+<img width="700" height="405" alt="image" src="https://github.com/user-attachments/assets/4cd0c40c-68fe-47de-9087-8918716ad41c" />
+
 
 ### Interview Flow Management
 - **LangChain**: LLM orchestration with chain-like workflow structure
