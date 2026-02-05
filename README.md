@@ -112,6 +112,8 @@ The platform extracts three types of features for comprehensive performance anal
 - Aggregation pipelines for analytics
 
 **3D Rendering (Unreal Engine 5)**
+<img width="1052" height="494" alt="image" src="https://github.com/user-attachments/assets/149bc93e-f32b-4d64-8d5a-0e363a1b3629" />
+
 - MetaHuman avatar rendering
 - Pixel Streaming for cloud-based delivery
 - Live Link for real-time animation
