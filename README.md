@@ -2,7 +2,7 @@
 <p align="center">
   <img src="https://github.com/user-attachments/assets/112deae5-a9f6-46cd-b127-560955a0517e" width="571" alt="image">
 </p>
-Research Paper: AI-Powered Interview Assessment Platform: AI-DRIVEN MOCK INTERVIEW SIMULATION USING RETRIEVAL-AUGMENTED GENERATION AND MULTIMODAL TRAIT ANALYSIS — Published in the Journal of Al-Azhar University Engineering Sector: https://journals.ekb.eg/article_501902.html.
+Research Paper: **AI-Driven Mock Interview Simulation Using Retrieval-Augmented Generation and Multimodal Trait Analysis** — Published in the Journal of Al-Azhar University Engineering Sector: https://journals.ekb.eg/article_501902.html.
 
 This project introduces an AI-driven platform designed to help users practice job interviews and assist companies in conducting initial candidate screenings. The system features an AI avatar that conducts realistic video interviews, analyzes interview performance through speech, facial expressions, and response patterns, and generates comprehensive feedback on behavioral and technical competencies. The platform combines computer vision, speech analysis, and machine learning techniques to provide automated, data-driven interview evaluation.
 
